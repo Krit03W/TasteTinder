@@ -1,0 +1,22 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    expose:
+      - "8000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        # ตั้งค่า URL สาธารณะของ backend ใน Dokploy → Environment Variables
+        # เช่น NEXT_PUBLIC_API_URL=https://api.tastetinder.example.com
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000}
+    expose:
+      - "3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
