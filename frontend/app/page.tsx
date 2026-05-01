@@ -43,7 +43,7 @@ export default function OnboardingPage() {
           transition={{ delay: 0.15 }}
           className="text-[40px] font-extrabold leading-[1.1] tracking-tight text-on-surface"
         >
-          Taste<span className="text-primary">Tinder</span>
+          Taste<span className="text-primary">Swipe</span>
         </motion.h1>
 
         <motion.p

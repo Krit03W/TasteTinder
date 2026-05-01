@@ -1,4 +1,4 @@
-# TasteTinder – Swipe-to-Trip App
+# TasteSwipe – Swipe-to-Trip App
 
 Swipe food & places → get a curated 1-day Bangkok itinerary.
 
@@ -7,7 +7,7 @@ Swipe food & places → get a curated 1-day Bangkok itinerary.
 ## Project Structure
 
 ```
-tastetinder/
+tasteswipe/
 ├── frontend/   Next.js 14 (React + TypeScript + Tailwind + Framer Motion)
 ├── backend/    FastAPI (Python)
 └── shared/     mockData.json (25 Bangkok items)

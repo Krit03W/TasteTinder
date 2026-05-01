@@ -1,5 +1,5 @@
 ---
-name: TasteTinder
+name: TasteSwipe
 colors:
   surface: '#fbfaee'
   surface-dim: '#dbdbcf'

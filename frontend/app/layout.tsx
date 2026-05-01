@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'TasteTinder – Swipe to Trip',
+  title: 'TasteSwipe – Swipe to Trip',
   description: 'Discover Bangkok one swipe at a time',
 }
 
