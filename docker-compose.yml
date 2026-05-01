@@ -1,5 +1,5 @@
 services:
-  backend:
+  taestetinder-backend:
     build:
       context: .
       dockerfile: backend/Dockerfile
@@ -7,9 +7,9 @@ services:
       - "8000"
     restart: unless-stopped
     networks:
-      - default          # ← อยู่แค่ internal network พอ
+      - default
 
-  frontend:
+  taestetinder-frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -18,14 +18,13 @@ services:
     expose:
       - "3000"
     depends_on:
-      - backend
+      - taestetinder-backend  # ← แก้ตรงนี้ด้วย
     restart: unless-stopped
     networks:
-      - default          # ← คุยกับ backend ผ่าน internal
-      - dokploy-network  # ← Traefik เข้าถึงได้
+      - default
 
 networks:
   default:
-    name: taestetinder-network  # ← ชื่อ unique
+    name: taestetinder-network
   dokploy-network:
     external: true
