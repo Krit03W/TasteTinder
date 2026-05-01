@@ -20,8 +20,9 @@ export default function SwipePage() {
       .finally(() => setLoading(false))
   }, [])
 
-  function handleComplete(likedIds: string[], likedItems: Item[]) {
+  function handleComplete(likedIds: string[], likedItems: Item[], dislikedIds: string[], dislikedItems: Item[]) {
     localStorage.setItem('tt_liked_items', JSON.stringify(likedItems))
+    localStorage.setItem('tt_disliked_ids', JSON.stringify(dislikedIds))
     router.push('/match')
   }
 

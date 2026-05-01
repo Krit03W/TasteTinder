@@ -20,8 +20,9 @@ export default function MatchPage() {
   async function handleGenerate() {
     setGenerating(true)
     try {
-      const ids = likedItems.map(i => i.id)
-      const result = await generateTrip(ids)
+      const likedIds = likedItems.map(i => i.id)
+      const dislikedIds: string[] = JSON.parse(localStorage.getItem('tt_disliked_ids') || '[]')
+      const result = await generateTrip(likedIds, dislikedIds)
       localStorage.setItem('tt_trip_result', JSON.stringify(result))
       router.push('/result')
     } catch {

@@ -8,7 +8,7 @@ import type { Item } from '@/lib/types'
 
 interface Props {
   items: Item[]
-  onComplete: (likedIds: string[], likedItems: Item[]) => void
+  onComplete: (likedIds: string[], likedItems: Item[], dislikedIds: string[], dislikedItems: Item[]) => void
 }
 
 const TYPE_COLORS: Record<string, string> = {
@@ -23,6 +23,8 @@ export default function SwipeStack({ items, onComplete }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [likedIds, setLikedIds] = useState<string[]>([])
   const [likedItems, setLikedItems] = useState<Item[]>([])
+  const [dislikedIds, setDislikedIds] = useState<string[]>([])
+  const [dislikedItems, setDislikedItems] = useState<Item[]>([])
   const [lastAction, setLastAction] = useState<'like' | 'skip' | null>(null)
 
   const remaining = items.length - currentIndex
@@ -33,17 +35,22 @@ export default function SwipeStack({ items, onComplete }: Props) {
     const item = items[currentIndex]
     const nextLikedIds = liked ? [...likedIds, item.id] : likedIds
     const nextLikedItems = liked ? [...likedItems, item] : likedItems
+    const nextDislikedIds = !liked ? [...dislikedIds, item.id] : dislikedIds
+    const nextDislikedItems = !liked ? [...dislikedItems, item] : dislikedItems
     const nextIndex = currentIndex + 1
 
     setLastAction(liked ? 'like' : 'skip')
     if (liked) {
       setLikedIds(nextLikedIds)
       setLikedItems(nextLikedItems)
+    } else {
+      setDislikedIds(nextDislikedIds)
+      setDislikedItems(nextDislikedItems)
     }
     setCurrentIndex(nextIndex)
 
     if (nextIndex >= items.length) {
-      setTimeout(() => onComplete(nextLikedIds, nextLikedItems), 600)
+      setTimeout(() => onComplete(nextLikedIds, nextLikedItems, nextDislikedIds, nextDislikedItems), 600)
     }
   }
 

@@ -8,11 +8,11 @@ export async function fetchItems(): Promise<Item[]> {
   return res.json()
 }
 
-export async function generateTrip(likedIds: string[]): Promise<TripResult> {
+export async function generateTrip(likedIds: string[], dislikedIds: string[] = []): Promise<TripResult> {
   const res = await fetch(`${BASE}/generate-trip`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ liked_ids: likedIds }),
+    body: JSON.stringify({ liked_ids: likedIds, disliked_ids: dislikedIds }),
   })
   if (!res.ok) throw new Error('Failed to generate trip')
   return res.json()

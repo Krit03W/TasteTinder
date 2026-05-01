@@ -64,19 +64,22 @@ export default function OnboardingPage() {
         className="relative h-52 mb-10 mx-4"
       >
         {[
-          { src: 'https://images.unsplash.com/photo-1559181567-c3190ca9904b?auto=format&fit=crop&w=400&q=80', rotate: '-6deg', left: '0%', zIndex: 1 },
-          { src: 'https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=400&q=80', rotate: '2deg', left: '28%', zIndex: 3 },
-          { src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=400&q=80', rotate: '10deg', left: '52%', zIndex: 2 },
-        ].map((card, i) => (
-          <div
-            key={i}
-            className="absolute top-0 w-36 h-48 rounded-[24px] overflow-hidden shadow-card-float"
-            style={{ left: card.left, transform: `rotate(${card.rotate})`, zIndex: card.zIndex }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={card.src} alt="" className="w-full h-full object-cover" />
-          </div>
-        ))}
+          { id: 'R002', label: 'Jay Fai', rotate: '-6deg', left: '0%', zIndex: 1 },
+          { id: 'A002', label: 'Wat Arun', rotate: '2deg', left: '28%', zIndex: 3 },
+          { id: 'A004', label: 'Yaowarat', rotate: '10deg', left: '52%', zIndex: 2 },
+        ].map((card, i) => {
+          const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+          return (
+            <div
+              key={i}
+              className="absolute top-0 w-36 h-48 rounded-[24px] overflow-hidden shadow-card-float"
+              style={{ left: card.left, transform: `rotate(${card.rotate})`, zIndex: card.zIndex }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`${base}/pics/${card.id}.jpg`} alt={card.label} className="w-full h-full object-cover" />
+            </div>
+          )
+        })}
       </motion.div>
 
       {/* Location selector */}
