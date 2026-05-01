@@ -33,7 +33,8 @@ class TripRequest(BaseModel):
 
 @app.get("/items")
 def get_items():
-    return load_items()
+    all_items = load_items()
+    return random.sample(all_items, min(20, len(all_items)))
 
 @app.post("/generate-trip")
 def generate_trip(req: TripRequest):
