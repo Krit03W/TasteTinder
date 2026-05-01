@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    background-color: #fbfaee;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: #fbfaee;
+    color: #1b1c15;
+    min-height: 100dvh;
+  }
+}
+
+@layer utilities {
+  .shadow-card-coral {
+    box-shadow: 0 8px 40px -4px rgba(164, 60, 18, 0.12), 0 2px 8px -2px rgba(164, 60, 18, 0.06);
+  }
+
+  .shadow-card-float {
+    box-shadow: 0 20px 60px -8px rgba(164, 60, 18, 0.20), 0 8px 24px -4px rgba(164, 60, 18, 0.12);
+  }
+
+  .gradient-card-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+  }
+
+  .btn-primary-gradient {
+    background: linear-gradient(135deg, #c44e1e 0%, #a43c12 50%, #8a3010 100%);
+  }
+
+  .glass-nav {
+    background: rgba(251, 250, 238, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+}
