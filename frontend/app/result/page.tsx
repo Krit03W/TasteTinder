@@ -96,7 +96,7 @@ export default function ResultPage() {
           </motion.button>
           <motion.button
             whileTap={{ scale: 0.97 }}
-            onClick={() => router.push('/swipe')}
+            onClick={() => router.push('/match')}
             className="flex-1 py-3.5 rounded-full btn-primary-gradient text-on-primary font-bold text-sm shadow-btn"
           >
             ✨ Re-generate
